@@ -17,12 +17,12 @@ async function sendMessage() {
 
   addUserPrompt(rawPrompt);
 
-  const message = normalizePrompt(rawPrompt);
+  const message = await normalizePrompt(rawPrompt);
   const firstWord = message.split(/\s+/)[0];
 
   try {
     const response = await generateResponse(message);
-    await addAssistantMessage(response);
+    await addAssistantMessage(await autoCorrect(response));
   } catch (error) {
     console.error('Error generating response:', error);
     await addAssistantMessage(
