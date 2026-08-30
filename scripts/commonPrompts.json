@@ -149,7 +149,14 @@
     "what the what",
     "what the heck",
     "what the hell",
-    "thats not right"
+    "thats not right",
+    "nope",
+    "no",
+    "im sorry",
+    "what is up with that",
+    "nuh uh",
+    "nuh uhh",
+    "yuh huh"
   ],
   "responses": [
     "Test received!",
@@ -286,7 +293,7 @@
     "Absolutely. Let's see if I can manage an actual answer this time.",
     "I'm sorry about that. Let's try to get to the actual answer this time.",
     "Let's find out.",
-    "What indeed. Let me try to make that clearer.",
+    "Yes indeed.",
     "Yes. That's generally how this works.",
     "And yet somehow we're still here.",
     "So, let's get to the point.",
@@ -301,33 +308,39 @@
     "Right?? What happened?",
     "What the heck indeed. Let's try to get to the bottom of this.",
     "I know, right?",
-    "I'm sorry that wasn't right. Let's try to get to the actual answer this time."
+    "I'm sorry that wasn't right. Let's try to get to the actual answer this time.",
+    "I'm sorry.",
+    "No worries, let's move on.",
+    "You should be! Just kidding, it's okay, let's move on.",
+    "The sky.",
+    "Oh, my bad.",
+    "Yuh huh!",
+    "Nuh uhh!"
   ],
   "jokePrompts": [
     "tell a joke",
     "make laugh",
-    "i want to hear a joke",
+    "to hear a joke",
     "do you know any jokes",
-    "can you tell a joke",
-    "i need a laugh",
-    "i want to hear a funny joke",
+    "a laugh",
+    "a joke",
+    "a funny joke",
     "do you know any funny jokes",
-    "can you tell a funny joke",
-    "i need a funny joke",
+    "a funny joke",
     "tell a funny joke",
     "tell another joke"
   ],
   "timePrompts": [
     "what time is it",
-    "can you tell the time",
+    "tell the time",
     "do you know what time it is",
     "what is the time",
-    "can you tell the current time",
+    "tell the current time",
     "do you know the current time"
   ],
   "datePrompts": [
     "what is the date",
-    "can you tell the date",
+    "tell the date",
     "do you know what date it is",
     "what day is it",
     "what day is it today",
@@ -336,7 +349,7 @@
   ],
   "weatherPrompts": [
     "what is the weather like",
-    "can you tell the weather",
+    "tell the weather",
     "do you know what the weather is like",
     "what is the current weather",
     "what is the current temperature",
@@ -348,32 +361,40 @@
     "flip a coin",
     "flip a coin again",
     "heads or tails",
-    "can you flip a coin",
-    "i want to flip a coin",
-    "flip a coin for",
-    "can you flip a coin for"
+    "flip a coin"
   ],
   "diceRollPrompts": [
     "roll a die",
     "roll a dice",
-    "can you roll a die",
-    "i want to roll a die",
-    "roll a die for me",
-    "can you roll a die for",
     "roll a d6"
   ],
   "randomCardPrompts": [
     "draw a card",
     "draw a card again",
-    "can you draw a card",
-    "draw a card for",
-    "can you draw a card for",
     "i need a card",
     "pick a card",
     "choose a card",
     "pick a card any card",
     "choose a card any card",
-    "draw a random card",
-    "draw a random card for"
+    "draw a random card"
+  ],
+  "repeatPrompts": [
+    "repeat",
+    "repeat that",
+    "say that again",
+    "say it again",
+    "repeat what you just said",
+    "repeat what you just said again",
+    "say what you just said again",
+    "repeat what you just said one more time",
+    "say what you just said one more time",
+    "reword",
+    "reword that",
+    "reword what you just said",
+    "rephrase",
+    "rephrase that",
+    "rephrase what you just said",
+    "again",
+    "one more time"
   ]
 }
