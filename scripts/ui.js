@@ -1,4 +1,5 @@
 const prompt = document.querySelector('#prompt');
+const footer = document.querySelector('footer');
 const sendMessageButton = document.querySelector('#sendMessage');
 let isGeneratingResponse = false;
 let showWelcomeMessage = true;
@@ -73,4 +74,18 @@ async function addAssistantMessage(message) {
   isGeneratingResponse = false;
   updateSendButton();
   window.scrollTo(0, document.body.scrollHeight);
+}
+
+if (window.visualViewport) {
+  const viewport = window.visualViewport;
+
+  function updateKeyboard() {
+    const keyboardHeight =
+      Math.max(0, window.innerHeight - viewport.height);
+
+    footer.style.bottom = `${keyboardHeight}px`;
+  }
+
+  viewport.addEventListener('resize', updateKeyboard);
+  updateKeyboard();
 }
