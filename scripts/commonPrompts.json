@@ -304,30 +304,30 @@
     "I'm sorry that wasn't right. Let's try to get to the actual answer this time."
   ],
   "jokePrompts": [
-    "tell me a joke",
-    "make me laugh",
+    "tell a joke",
+    "make laugh",
     "i want to hear a joke",
     "do you know any jokes",
-    "can you tell me a joke",
+    "can you tell a joke",
     "i need a laugh",
     "i want to hear a funny joke",
     "do you know any funny jokes",
-    "can you tell me a funny joke",
+    "can you tell a funny joke",
     "i need a funny joke",
-    "tell me a funny joke",
-    "tell me another joke"
+    "tell a funny joke",
+    "tell another joke"
   ],
   "timePrompts": [
     "what time is it",
-    "can you tell me the time",
+    "can you tell the time",
     "do you know what time it is",
     "what is the time",
-    "can you tell me the current time",
+    "can you tell the current time",
     "do you know the current time"
   ],
   "datePrompts": [
     "what is the date",
-    "can you tell me the date",
+    "can you tell the date",
     "do you know what date it is",
     "what day is it",
     "what day is it today",
@@ -336,7 +336,7 @@
   ],
   "weatherPrompts": [
     "what is the weather like",
-    "can you tell me the weather",
+    "can you tell the weather",
     "do you know what the weather is like",
     "what is the current weather",
     "what is the current temperature",
@@ -350,8 +350,8 @@
     "heads or tails",
     "can you flip a coin",
     "i want to flip a coin",
-    "flip a coin for me",
-    "can you flip a coin for me"
+    "flip a coin for",
+    "can you flip a coin for"
   ],
   "diceRollPrompts": [
     "roll a die",
@@ -359,21 +359,21 @@
     "can you roll a die",
     "i want to roll a die",
     "roll a die for me",
-    "can you roll a die for me",
+    "can you roll a die for",
     "roll a d6"
   ],
   "randomCardPrompts": [
     "draw a card",
     "draw a card again",
     "can you draw a card",
-    "draw a card for me",
-    "can you draw a card for me",
+    "draw a card for",
+    "can you draw a card for",
     "i need a card",
     "pick a card",
     "choose a card",
     "pick a card any card",
     "choose a card any card",
     "draw a random card",
-    "draw a random card for me"
+    "draw a random card for"
   ]
 }
