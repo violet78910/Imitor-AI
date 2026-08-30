@@ -22,7 +22,11 @@ function normalizePrompt(message) {
   if (normalized.split(/\s+/).length > 2) {
     normalized = normalized.replace(/\b(please|then|than|so|me)\b/g, '');
   }
-    console.log(`Normalized prompt: "${normalized}"`);
+
+  // remove double spaces
+  normalized = normalized.replace(/\s{2,}/g, ' ');
+  normalized = normalized.trim();
+  
   return normalized;
 }
 
