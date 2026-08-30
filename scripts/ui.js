@@ -66,9 +66,17 @@ async function addAssistantMessage(message) {
   chat.appendChild(assistantMessage);
   isGeneratingResponse = true;
 
+  // Animate the assistant's message character by character
+  // At the start of words (spaces) and sentences (punctuation), add a random delay to simulate thinking time
+  let previousChar = '';
   for (let i = 0; i < message.length; i++) {
     bubble.textContent += message[i];
-    await new Promise(resolve => setTimeout(resolve, randNum(15, 50)));
+    previousChar = message[i];
+    if (previousChar === ' ' || previousChar === '.' || previousChar === ',' || previousChar === '!' || previousChar === '?') {
+      await new Promise(resolve => setTimeout(resolve, randNum(45, 75)));
+    } else {
+      await new Promise(resolve => setTimeout(resolve, randNum(15, 40)));
+    }
   }
   
   isGeneratingResponse = false;
