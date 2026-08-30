@@ -11,7 +11,7 @@ function getRandomElement(array) {
 }
 
 async function normalizePrompt(message) {
-  
+
   let normalized = message.replace(/\bsq\b/g, 'square');
 
   // run message through auto-corrector to fix common typos and misspellings
@@ -567,6 +567,11 @@ async function getWikiResponse(message) {
       return null;
     }
 
+    // if definition starts with title, remove it
+    if (lowerDescription.startsWith(title.toLowerCase())) {
+      return description.trim();
+    }
+
     if (message.startsWith('what is the ')) {
       // If first letter of description is a vowel, use "an" instead of "a"
       if (/^[aeiou]/i.test(description.trim())) {
@@ -574,10 +579,14 @@ async function getWikiResponse(message) {
       } else {
         return `The ${title} is a ${description.trim()}.`;
       };
+    } else if (message.startsWith('what is a ')){
+      return `A ${title} is a ${description.trim()}.`;
+    } else if (message.startsWith('what is an ')){
+      return `An ${title} is a ${description.trim()}.`;
     } else if (message.startsWith('what is ')) {
-      return `The ${title} is ${description.trim()}.`;
+      return `${title}: ${description.trim()}.`;
     }
-    return `${title} is a ${description.trim()}.`;
+    return `${title}: ${description.trim()}.`;
 
   } catch (error) {
     return null;
