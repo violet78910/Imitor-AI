@@ -11,9 +11,11 @@ function getRandomElement(array) {
 }
 
 async function normalizePrompt(message) {
+  
+  let normalized = message.replace(/\bsq\b/g, 'square');
 
   // run message through auto-corrector to fix common typos and misspellings
-  let normalized = await autoCorrect(message);
+  normalized = await autoCorrect(normalized);
 
   normalized = normalized.trim().toLowerCase();
 
