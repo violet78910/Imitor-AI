@@ -8,6 +8,7 @@ body, html {
   background: #111;
   color: #fff;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  overflow: hidden;
 }
 body {
   display: flex;
@@ -48,6 +49,7 @@ main {
   max-width: 50rem;
   margin: 0 auto;
   padding: 5rem 1rem 7rem;
+  overflow-y: auto;
 }
 main h2 {
   font-size: 1.5rem;
