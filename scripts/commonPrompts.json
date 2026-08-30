@@ -156,7 +156,8 @@
     "what is up with that",
     "nuh uh",
     "nuh uhh",
-    "yuh huh"
+    "yuh huh",
+    "youre not helpful"
   ],
   "responses": [
     "Test received!",
@@ -315,6 +316,7 @@
     "The sky.",
     "Oh, my bad.",
     "Yuh huh!",
+    "Nuh uhh!",
     "Nuh uhh!"
   ],
   "jokePrompts": [
