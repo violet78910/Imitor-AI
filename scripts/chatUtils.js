@@ -85,9 +85,9 @@ function removeDoubleSpaces(input) {
 }
 
 async function autoCorrect(message) {
-  // if message contains "nuh uh" or "nuh uhh" or "yuh huh", return message as is
+  // if message contains "nuh uh" or "nuh uhh" or "yuh huh" or "Imitor", return message as is
   const lowerMessage = message.toLowerCase();
-  if (lowerMessage.includes("nuh uh") || lowerMessage.includes("nuh uhh") || lowerMessage.includes("yuh huh")) {
+  if (lowerMessage.includes("nuh uh") || lowerMessage.includes("nuh uhh") || lowerMessage.includes("yuh huh") || lowerMessage.includes("imitor")) {
     return message;
   }
   try {
@@ -524,7 +524,7 @@ function repeatPreviousAssistantMessage() {
 function extractWikiQuestion(prompt) {
   const patterns = [
     /^(what|who)\s+(is|are)\s+(the\s+)?/i,
-    /^(can you tell about|do you know about|does anyone know about|is there any information about|are there any details about)\s+/i
+    /^(can you tell about|do you know about|who was the|what was the|when was the|where is|where was the|why was the|how was the|what does the|what is the|what are the|does anyone know about|is there any information about|are there any details about|what can you tell me about)\s+/i
   ];
 
   for (const pattern of patterns) {
