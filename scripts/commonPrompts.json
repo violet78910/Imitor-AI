@@ -598,7 +598,9 @@
     "do you know any funny jokes",
     "a funny joke",
     "tell a funny joke",
-    "tell another joke"
+    "tell another joke",
+    "tell joke",
+    "tell joke again"
   ],
   "timePrompts": [
     "what time is it",
@@ -606,7 +608,8 @@
     "do you know what time it is",
     "what is the time",
     "tell the current time",
-    "do you know the current time"
+    "do you know the current time",
+    "time"
   ],
   "datePrompts": [
     "what is the date",
@@ -615,7 +618,8 @@
     "what day is it",
     "what day is it today",
     "what date is it",
-    "what is todays date"
+    "what is todays date",
+    "date"
   ],
   "weatherPrompts": [
     "what is the weather like",
@@ -632,12 +636,19 @@
     "flip a coin again",
     "heads or tails",
     "flip a coin",
+    "flip another coin",
+    "flip coin",
+    "flip coin again",
+    "heads or tails again",
     "flip another coin"
   ],
   "diceRollPrompts": [
     "roll a die",
     "roll a dice",
-    "roll a d6"
+    "roll a d6",
+    "roll die",
+    "roll dice",
+    "roll d6"
   ],
   "randomCardPrompts": [
     "draw a card",
@@ -647,7 +658,10 @@
     "choose a card",
     "pick a card any card",
     "choose a card any card",
-    "draw a random card"
+    "draw a random card",
+    "draw card",
+    "draw card again",
+    "need card"
   ],
   "repeatPrompts": [
     "repeat",
