@@ -188,18 +188,18 @@ async function generateResponse(message) {
     return repeatPreviousAssistantMessage();
   }
 
-  if (questionWords.includes(firstWord) || rawPrompt.endsWith('?') || message.split(/\s+/).length === 1) {
-    const wikiResponse = await getWikiResponse(message);
-    if (wikiResponse !== null) {
-      return wikiResponse;
-    } else {
-      const dictionaryResponse = await getDictionaryResponse(message);
-      if (dictionaryResponse !== null) {
-        return dictionaryResponse;
-      } else if (message.split(/\s+/).length > 1) {
-        return genericQuestionResponses();
-      }
-    }
+  const wikiResponse = await getWikiResponse(message);
+  if (wikiResponse !== null) {
+    return wikiResponse;
+  }
+
+  const dictionaryResponse = await getDictionaryResponse(message);
+  if (dictionaryResponse !== null) {
+    return dictionaryResponse;
+  }
+
+  if (questionWords.includes(firstWord) || rawPrompt.endsWith('?')) {
+    return genericQuestionResponses();
   }
 
   if (taskWords.includes(firstWord)) {
