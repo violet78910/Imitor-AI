@@ -78,6 +78,10 @@ main h2 {
 .message.assistant .bubble {
   max-width: 90%;
 }
+.bubble {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 
 /* Composer */
 footer {
