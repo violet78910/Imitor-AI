@@ -9,12 +9,28 @@ function updateSendButton() {
     sendMessageButton.disabled = false;
     sendMessageButton.style.cursor = 'pointer';
     sendMessageButton.style.background = '#fff';
+    sendMessageButton.textContent = '⬆︎';
+  }else if (isGeneratingResponse) {
+    sendMessageButton.disabled = false;
+    sendMessageButton.style.cursor = 'pointer';
+    sendMessageButton.style.background = '#fff';
+    sendMessageButton.textContent = '⏹';
   } else {
     sendMessageButton.disabled = true;
     sendMessageButton.style.cursor = 'default';
     sendMessageButton.style.background = '#888';
+    sendMessageButton.textContent = '⬆︎';
   }
 }
+
+sendMessageButton.addEventListener('click', () => {
+  if (isGeneratingResponse) {
+    isGeneratingResponse = false;
+    updateSendButton();
+  } else if (prompt.value.trim().length > 0) {
+    sendMessage();
+  }
+});
 
 prompt.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && !e.shiftKey) {
@@ -33,12 +49,6 @@ prompt.addEventListener('input', () => {
     prompt.classList.remove('noScroll');
   } else {
     prompt.classList.add('noScroll');
-  }
-});
-
-sendMessageButton.addEventListener('click', () => {
-  if (prompt.value.trim().length > 0) {
-    sendMessage();
   }
 });
 
@@ -65,6 +75,7 @@ async function addAssistantMessage(message) {
   assistantMessage.appendChild(bubble);
   chat.appendChild(assistantMessage);
   isGeneratingResponse = true;
+  updateSendButton();
 
   // Animate the assistant's message character by character
   // At the start of words (spaces) and sentences (punctuation), add a random delay to simulate thinking time
@@ -73,6 +84,9 @@ async function addAssistantMessage(message) {
   for (let i = 0; i < message.length; i++) {
     bubble.textContent += message[i];
     previousChar = message[i];
+    if (!isGeneratingResponse) {
+      break;
+    }
     if (previousChar === ' ' || previousChar === '.' || previousChar === ',' || previousChar === '!' || previousChar === '?') {
       await new Promise(resolve => setTimeout(resolve, randNum(45, 75)));
     } else {
