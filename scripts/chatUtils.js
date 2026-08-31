@@ -13,11 +13,23 @@ function getRandomElement(array) {
 async function normalizePrompt(message) {
 
   let normalized = message
+    .toLowerCase()
     .replace(/\bsq\b/g, 'square')
     .replace(/\bcb\b/g, 'cube');
 
   // Replace "floz" and "fl oz" with "fluid ounces" anywhere in the message, regardless of case
   normalized = normalized.replace(/\b(floz|fl oz)\b/gi, 'fluid ounces');
+
+  // converts text slang and abbreviations to their full forms
+  normalized = normalized
+    .replace(/\bpls\b/g, 'please')
+    .replace(/\bthx\b/g, 'thanks')
+    .replace(/\bty\b/g, 'thank you')
+    .replace(/\bu\b/g, 'you')
+    .replace(/\br\b/g, 'are')
+    .replace(/\bjs\b/g, 'JavaScript');
+
+  console.log(`Normalized prompt: "${normalized}"`);
 
   // run message through auto-corrector to fix common typos and misspellings
   normalized = await autoCorrect(normalized);
