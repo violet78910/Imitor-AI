@@ -34,11 +34,27 @@ async function normalizePrompt(message) {
   // run message through auto-corrector to fix common typos and misspellings
   normalized = await autoCorrect(normalized);
 
-  normalized = normalized.trim().toLowerCase();
-
   normalized = normalized.replace(/[.,!?;:']+/g, '');
 
-  normalized = normalized.replace(/^whats\b/, 'what is');
+  normalized = normalized.trim().toLowerCase();
+
+  // Remove common contractions and replace them with their full forms
+  normalized = normalized
+    .replace(/\bwhats\b/g, 'what is')
+    .replace(/\btheres\b/g, 'there is')
+    .replace(/\bwhos\b/g, 'who is')
+    .replace(/\bim\b/g, 'i am')
+    .replace(/\bhes\b/g, 'he is')
+    .replace(/\bshes\b/g, 'she is')
+    .replace(/\btheyre\b/g, 'they are')
+    .replace(/\bive\b/g, 'i have')
+    .replace(/\bwont\b/g, 'will not')
+    .replace(/\bdont\b/g, 'do not')
+    .replace(/\bcant\b/g, 'can not')
+    .replace(/\bdoesnt\b/g, 'does not')
+    .replace(/\bdidnt\b/g, 'did not')
+    .replace(/\byoure\b/g, 'you are')
+    .replace(/\bhasnt\b/g, 'has not');
 
   // remove any trailing "for me" or "thanks" or "thank you" if longer than two words
   if (normalized.split(/\s+/).length > 2) {
@@ -47,7 +63,7 @@ async function normalizePrompt(message) {
 
   // remove please, then, than (if word count is more than two)
   if (normalized.split(/\s+/).length > 2) {
-    normalized = removeDoubleSpaces(normalized).replace(/\b(please|then|than|so|me)\b/g, '');
+    normalized = removeDoubleSpaces(normalized).replace(/\b(please|then|than|so|me|there)\b/g, '');
   }
 
   // remove any leading "can you" or "could you" or "would you" or "will you" or "shall you" if longer than two words
@@ -68,11 +84,13 @@ function sanitizeString(input) {
   sanitized = sanitized.replace(/^\s*the\s+/i, "");
 
   // Replace any html entity codes with their corresponding characters
-  sanitized = sanitized.replace(/&amp;/g, "&");
-  sanitized = sanitized.replace(/&lt;/g, "<");
-  sanitized = sanitized.replace(/&gt;/g, ">");
-  sanitized = sanitized.replace(/&quot;/g, '"');
-  sanitized = sanitized.replace(/&#39;/g, "'");
+  sanitized = sanitized
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&#39;/g, "'");
 
   sanitized = sanitized.trim();
   sanitized = removeDoubleSpaces(sanitized);
