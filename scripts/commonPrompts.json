@@ -235,7 +235,8 @@
     "what if fluid ounces juice blasted fluid ounces juice",
     "what if the pope blasted fluid ounces juice",
     "what if the fluid ounces juice blasted the pope",
-    "what if fluid ounces juice blasted the pope"
+    "what if fluid ounces juice blasted the pope",
+    "i lost the game"
   ],
   "responses": [
     "Test received!",
@@ -473,7 +474,8 @@
     "That would be sick.",
     "That would be sick.",
     "That would be sick.",
-    "That would be sick."
+    "That would be sick.",
+    "I lost the game."
   ],
   "jokePrompts": [
     "tell a joke",
