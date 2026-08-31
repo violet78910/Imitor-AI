@@ -236,7 +236,14 @@
     "what if the fluid ounces juice blasted the pope",
     "what if fluid ounces juice blasted the pope",
     "i lost the game",
-    "wow"
+    "wow",
+    "hello how are you",
+    "can you do math",
+    "yes please help me with that",
+    "ok what do you feel like",
+    "ok what do you feel like doing",
+    "very funny",
+    "funny"
   ],
   "responses": [
     "Test received!",
@@ -475,7 +482,14 @@
     "That would be sick.",
     "That would be sick.",
     "I lost the game.",
-    "Wow indeed."
+    "Wow indeed.",
+    "I'm doing well, thanks for asking! How can I help?",
+    "Yes, I can do math. What kind of math problem would you like help with?",
+    "Okay, what do you need help with?",
+    "I would love to help you! What kind of help do you need?",
+    "i guess you could say that I'd like to help you with whatever you need help with. What do you need help with?",
+    "Thank you! I'm glad you think so.",
+    "Thanks! I'm glad you think so."
   ],
   "jokePrompts": [
     "tell a joke",
