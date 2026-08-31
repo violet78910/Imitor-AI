@@ -12,7 +12,12 @@ function getRandomElement(array) {
 
 async function normalizePrompt(message) {
 
-  let normalized = message.replace(/\bsq\b/g, 'square');
+  let normalized = message
+    .replace(/\bsq\b/g, 'square')
+    .replace(/\bcb\b/g, 'cube');
+
+  // Replace "floz" and "fl oz" with "fluid ounces" anywhere in the message, regardless of case
+  normalized = normalized.replace(/\b(floz|fl oz)\b/gi, 'fluid ounces');
 
   // run message through auto-corrector to fix common typos and misspellings
   normalized = await autoCorrect(normalized);
