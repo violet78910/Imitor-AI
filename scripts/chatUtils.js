@@ -195,6 +195,10 @@ async function generateResponse(message) {
     return `I drew the ${getRandCard()}.`;
   }
 
+  if (commonPrompts.recitePiPrompts.includes(message)) {
+    return `Pi is ${commonPrompts.pi}.`;
+  }
+
   const mathResponse = getMathResponse(message);
 
   if (mathResponse !== null) {
