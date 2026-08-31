@@ -69,6 +69,7 @@ async function addAssistantMessage(message) {
   // Animate the assistant's message character by character
   // At the start of words (spaces) and sentences (punctuation), add a random delay to simulate thinking time
   let previousChar = '';
+  window.scrollTo(0, document.body.scrollHeight);
   for (let i = 0; i < message.length; i++) {
     bubble.textContent += message[i];
     previousChar = message[i];
