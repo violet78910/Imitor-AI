@@ -17,9 +17,6 @@ async function normalizePrompt(message) {
     .replace(/\bsq\b/g, 'square')
     .replace(/\bcb\b/g, 'cube');
 
-  // Replace "floz" and "fl oz" with "fluid ounces" anywhere in the message, regardless of case
-  normalized = normalized.replace(/\b(floz|fl oz)\b/gi, 'fluid ounces');
-
   // converts text slang and abbreviations to their full forms
   normalized = normalized
     .replace(/\bpls\b/g, 'please')
@@ -27,7 +24,9 @@ async function normalizePrompt(message) {
     .replace(/\bty\b/g, 'thank you')
     .replace(/\bu\b/g, 'you')
     .replace(/\br\b/g, 'are')
-    .replace(/\bjs\b/g, 'JavaScript');
+    .replace(/\bjs\b/g, 'JavaScript')
+    .replace(/\bpy\b/g, 'Python')
+    .replace(/\b(floz|fl oz)\b/gi, 'fluid ounces');
 
   console.log(`Normalized prompt: "${normalized}"`);
 
@@ -36,10 +35,12 @@ async function normalizePrompt(message) {
 
   normalized = normalized.replace(/[.,!?;:']+/g, '');
 
-  normalized = normalized.trim().toLowerCase();
+  normalized = removeDoubleSpaces(normalized).trim();
 
-  // Remove common contractions and replace them with their full forms
+  // Remove common contractions, and replace them with their full forms
   normalized = normalized
+    .toLowerCase()
+    .trim()
     .replace(/\bwhats\b/g, 'what is')
     .replace(/\btheres\b/g, 'there is')
     .replace(/\bwhos\b/g, 'who is')
@@ -54,7 +55,8 @@ async function normalizePrompt(message) {
     .replace(/\bdoesnt\b/g, 'does not')
     .replace(/\bdidnt\b/g, 'did not')
     .replace(/\byoure\b/g, 'you are')
-    .replace(/\bhasnt\b/g, 'has not');
+    .replace(/\bhasnt\b/g, 'has not')
+    .replace(/\bthats\b/g, 'that is');
 
   // remove any trailing "for me" or "thanks" or "thank you" if longer than two words
   if (normalized.split(/\s+/).length > 2) {
@@ -591,14 +593,25 @@ function repeatPreviousAssistantMessage() {
 // ============================================================
 
 function extractWikiQuestion(prompt) {
+  const text = prompt.trim();
+
   const patterns = [
-    /^(what|who)\s+(is|are)\s+(the\s+)?/i,
-    /^(can you tell about|do you know about|who was the|what was the|when was the|where is|where was the|why was the|how was the|what does the|what is the|what are the|does anyone know about|is there any information about|are there any details about|what can you tell me about)\s+/i
+    /^(?:what|who)\s+(?:is|are|was|were)\s+(?:the\s+)?/i,
+    /^(?:when|where|why|how)\s+(?:was|were|is|are|did|does|do)\s+(?:the\s+)?/i,
+    /^(?:who|what)\s+(?:created|founded|invented|discovered|wrote|built)\s+(?:the\s+)?/i,
+    /^(?:when|where|why|how)\s+did\s+/i,
+    /^(?:can you tell about|can you tell|do you know about|do you know)\s+/i,
+    /^(?:tell about|information about|details about)\s+/i,
+    /^(?:can you look up|look up)\s+/i,
   ];
 
   for (const pattern of patterns) {
-    if (pattern.test(prompt)) {
-      return prompt.replace(pattern, '').trim();
+    const match = text.match(pattern);
+
+    if (match) {
+      return text
+        .slice(match[0].length)
+        .trim();
     }
   }
 
@@ -780,7 +793,10 @@ function genericQuestionResponses() {
   return getRandomElement([
     "That's an interesting question, let me help you with that!",
     `I understand you're asking about "${genericMessage}". Let me help you with that!`,
-    `I see you're trying to figure out "${genericMessage}". I can help you with that!`
+    `I see you're trying to figure out "${genericMessage}". I can help you with that!`,
+    "Absolutely! Let’s figure that out.",
+    "Sure! Let's work on that together.",
+    `I understand that you’re asking about ‘${genericMessage}’. Let me see if I can help with that!`
   ]);
 }
 
