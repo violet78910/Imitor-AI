@@ -179,6 +179,10 @@ loadCommonPrompts();
 async function generateResponse(message) {
   const firstWord = message.split(/\s+/)[0];
 
+  if (commonPrompts.greetingsPrompts.includes(message)) {
+    return getGreetingResponse();
+  }
+
   if (commonPrompts.prompts.includes(message)) {
     return commonPrompts.responses[
       commonPrompts.prompts.indexOf(message)
@@ -246,6 +250,30 @@ async function generateResponse(message) {
   }
 
   return getRandomElement(unknownResponses);
+}
+
+// ============================================================
+// Greetings
+// ============================================================
+
+function getGreetingResponse() {
+  let greetingResponses = getRandomElement(commonPrompts.greetingsResponses);
+  if (greetingResponses === "Time based greeting") {
+    const now = new Date();
+    const hour = now.getHours();
+    if (hour < 12) {
+      greetingResponses = "Good morning!";
+    } else if (hour < 18) {
+      greetingResponses = "Good afternoon!";
+    } else {
+      greetingResponses = "Good evening!";
+    }
+  }
+
+  greetingResponses += getRandomElement(commonPrompts.greetingResponsesFollowUps);
+
+  return greetingResponses;
+
 }
 
 // ============================================================
@@ -394,6 +422,29 @@ function getMathResponse(message) {
   expression = expression
     .replace(/^(what is|calculate|compute|evaluate|solve)\s+/i, '')
     .trim();
+
+  // Random number ex: "what is a random number between 1 and 10"
+  const randomMatch = expression.match(
+    /^(?:a\s+)?random\s+number\s+(?:between|from)\s+(.+?)\s+(?:and|to)\s+(.+)$/
+  );
+
+  // convert the matched numbers to integers
+  if (randomMatch) {
+    let numOne = convertNumberPhrases(randomMatch[1]);
+    let numTwo = convertNumberPhrases(randomMatch[2]);
+
+    numOne = parseInt(numOne, 10);
+    numTwo = parseInt(numTwo, 10);
+
+    if (isNaN(numOne) || isNaN(numTwo)) {
+      return "I couldn't parse the numbers for the random number generator.";
+    }
+
+    const minNum = Math.min(numOne, numTwo);
+    const maxNum = Math.max(numOne, numTwo);
+
+    return `The random number between ${numOne} and ${numTwo} is ${randNum(minNum, maxNum)}.`;
+  }
 
   // Square root
   const sqrtMatch = expression.match(
